@@ -4,14 +4,19 @@
 Type an SQL query in the following box: <p>
 Example: <tt>SELECT * FROM Actor WHERE id=10;</tt><br />
 <p>
-<form action="." method="GET">
+<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="GET">
 <textarea name="query" cols="60" rows="8"></textarea><br />
 <input type="submit" value="Submit" />
 </form>
 
 <?php
+
+	if ($_SERVER['REQUEST_METHOD'] == "GET"){
+			$userQuery = $_GET['query'];
+	}
+
 	$db_connection = mysql_connect("localhost", "cs143", "");
-	mysql_select_db("CS143", $db_connection);
+	mysql_select_db("TEST", $db_connection);
 
 	$query = "SELECT * FROM Movie where id =100";
 	$rs = mysql_query($query, $db_connection);
