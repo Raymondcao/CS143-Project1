@@ -1,5 +1,5 @@
 <html>
-<head><title>CS143 Project 1B Demo</title></head>
+<head><title>CS143 Project 1B</title></head>
 <body>
 Type an SQL query in the following box: <p>
 Example: <tt>SELECT * FROM Actor WHERE id=10;</tt><br />
@@ -16,10 +16,9 @@ Example: <tt>SELECT * FROM Actor WHERE id=10;</tt><br />
 	}
 
 	$db_connection = mysql_connect("localhost", "cs143", "");
-	mysql_select_db("TEST", $db_connection);
+	mysql_select_db("CS143", $db_connection);
 
-	$query = "SELECT * FROM Movie where id =100";
-	$rs = mysql_query($query, $db_connection);
+	$rs = mysql_query($userQuery, $db_connection);
 
 	print "<table border=1 cellspacing=1 cellpadding=2>";
 
@@ -36,7 +35,11 @@ Example: <tt>SELECT * FROM Actor WHERE id=10;</tt><br />
 		$countRow = count($row);
 
 		foreach($row as $value){
-			print "<td>$value</td>";
+			if ($value){
+				print "<td>$value</td>";
+			}else{
+				print "<td>N/A</td>";				
+			}
 		}
 		print "</tr>";
 		$row = mysql_fetch_row($rs);
