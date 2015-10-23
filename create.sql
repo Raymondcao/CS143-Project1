@@ -1,6 +1,6 @@
 CREATE TABLE Movie(
 	id int COMMENT 'Movie ID' NOT NULL, 
-	title varchar(100) COMMENT 'Movie title', 
+	title varchar(100) COMMENT 'Movie title' NOT NULL, 
 	year int COMMENT 'Release year', 
 	rating varchar(10) COMMENT 'MPAA rating', 
 	company varchar(50) COMMENT 'Producation company',
