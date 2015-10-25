@@ -40,9 +40,10 @@ FUCKKKKKKK
 	$rs = mysql_query($query, $db_connection);
 	$affected = mysql_affected_rows($db_connection);
 	if($affected > 0)
-		echo "<br>Sucess!<br>";
+		echo "<br>Success!<br>";
 	
 	
 ?>
+<a href="addActorDirector.php"> Go Back </a>
 </body>
 </html>
