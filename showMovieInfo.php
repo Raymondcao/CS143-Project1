@@ -33,7 +33,7 @@ $db_connection = mysql_connect("localhost", "cs143", "");
 		$row = mysql_fetch_array($rs);
 		printf("%s<br>", $row[0]);
 	}
-	$query = sprintf("SELECT last,first,role FROM MovieActor mA, Actor A WHERE mid = '%s' AND A.id = mA.aid", mysql_real_escape_string($id, $db_connection));
+	$query = sprintf("SELECT id,last,first,role FROM MovieActor mA, Actor A WHERE mid = '%s' AND A.id = mA.aid", mysql_real_escape_string($id, $db_connection));
 	$rs = mysql_query($query, $db_connection);
 	$numrows = mysql_num_rows($rs);
 	if($numrows > 0)
@@ -43,7 +43,7 @@ $db_connection = mysql_connect("localhost", "cs143", "");
 		for($i = 0; $i < $numrows; $i++)
 		{
 			$row = mysql_fetch_assoc($rs);
-			printf("<li> %s %s acting as '%s' </li>", $row['first'], $row['last'], $row['role']);
+			printf("<li> <a href=\"showActorInfo.php?id=%s\"> %s %s </a> acting as '%s' </li>", $row['id'], $row['first'], $row['last'], $row['role']);
 		}
 		echo "</ul>";
 	}
