@@ -13,14 +13,15 @@
 				
 <?php
 	if ($_SERVER['REQUEST_METHOD'] == "GET"){
-		$keyword = $_GET['keyword'];
+		$unescapedKeyword = $_GET['keyword'];
 	}
-	if ($keyword){
+	if ($unescapedKeyword){
 		$db_connection = mysql_connect("localhost", "cs143", "");
 		mysql_select_db("TEST", $db_connection);
 		
-		echo "You are searching [".$keyword."] results...<br><br>";
+		echo "You are searching [".$unescapedKeyword."] results...<br><br>";
 
+		$keyword = mysql_real_escape_string($unescapedKeyword, $db_connection);
 		echo "Searching match records in Actor database ... <br>";
 		$query = sprintf("SELECT id, first, last, dob FROM Actor WHERE first LIKE '%%%s%%' OR last LIKE '%%%s%%';",$keyword, $keyword);
 		$actors = mysql_query($query, $db_connection);
@@ -43,6 +44,8 @@
 			echo "Movie: <a href=\"./showMovieInfo.php?id=".$movie[1]."\">".$movie[0]."(".$movie[2].")</a><br>";
 			$movie = mysql_fetch_row($movies);
 		}
+
+		mysql_close($db_connection);
 	}
 ?>
 </body></html>
