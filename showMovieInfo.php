@@ -33,6 +33,23 @@ $db_connection = mysql_connect("localhost", "cs143", "");
 		$row = mysql_fetch_array($rs);
 		printf("%s<br>", $row[0]);
 	}
+	
+		$query = sprintf("SELECT last, first FROM MovieDirector mD, Director D WHERE mid = '%s' AND D.id = mD.did", mysql_real_escape_string($id, $db_connection));
+	$rs = mysql_query($query, $db_connection);
+	$numrows = mysql_num_rows($rs);
+	if($numrows > 0)
+	{
+		echo "<p><b>Directors:</b><br></p>";
+		echo "<ul>";
+		for($i = 0; $i < $numrows; $i++)
+		{
+			$row = mysql_fetch_assoc($rs);
+			printf("<li>  %s %s </li>", $row['first'], $row['last']);
+		}
+		echo "</ul><br>";
+	}
+	
+	
 	$query = sprintf("SELECT id,last,first,role FROM MovieActor mA, Actor A WHERE mid = '%s' AND A.id = mA.aid", mysql_real_escape_string($id, $db_connection));
 	$rs = mysql_query($query, $db_connection);
 	$numrows = mysql_num_rows($rs);
