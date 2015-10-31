@@ -1,8 +1,10 @@
 
 <html>
-<head></head>
+<head>
+<link rel="stylesheet" type="text/css" href="mainframe.css">
+</head>
 <body>
-<form method="POST">
+<form method="post">
 Identity:  <input type="radio" name="identity" value="Actor" checked>Actor  <input type="radio" name="identity" value="Director">Director <br>
 First name: <input type="text" name="firstname"><br>
 Last name: <input type="text" name="lastname"><br>
@@ -22,7 +24,7 @@ DOD: <input type="text" name="dod"><br>
 	$row = mysql_fetch_row($rs);
 	$id = $row[0];
 	echo "received id = $id<br>";
-	$id++;4
+	$id++;
 	mysql_query("UPDATE MaxPersonID SET id=id+1", $db_connection);
 	$query = "";
 	$dod = "NULL";

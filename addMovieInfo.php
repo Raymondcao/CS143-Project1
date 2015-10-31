@@ -1,6 +1,7 @@
 
 <html>
-<head></head>
+<head>
+<link rel="stylesheet" type="text/css" href="mainframe.css"></head>
 <body>
 <form method="post">
 Title: <input type="text" name="title"><br>

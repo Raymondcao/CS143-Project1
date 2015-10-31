@@ -1,4 +1,5 @@
 <html><head>
+<link rel="stylesheet" type="text/css" href="mainframe.css">
 		<title>Search Actor / Movie</title>
 	</head>	
 	<body>
