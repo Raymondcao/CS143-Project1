@@ -4,9 +4,9 @@
 <link rel="stylesheet" type="text/css" href="mainframe.css"></head>
 <body>
 <form method="post">
-Title: <input type="text" name="title"><br>
-Company: <input type="text" name="company"><br>
-Year: <input type="text" name="year"><br>
+Title: <input type="text" name="title"><br><br>
+Year: <input type="text" name="year"><br><br>
+Company: <input type="text" name="company"><br><br>
 Rating:
 <select name="rating">
   <option value="G">G</option>
@@ -16,7 +16,7 @@ Rating:
   <option value="R">R</option>
   <option value="Surrendere">Surrendere</option>
 </select>
-<br>
+<br><br>
 <input type="checkbox" name = "Action" value="1"> Action
 <input type="checkbox" name = "Adult" value="1"> Adult
 <input type="checkbox" name = "Adventure" value="1"> Adventure
@@ -35,8 +35,10 @@ Rating:
 <input type="checkbox" name = "Thriller" value="1">Thriller
 <input type="checkbox" name = "War" value="1">War
 <input type="checkbox" name = "Western" value="1">Western
+<br><br>
 <input type="submit" value="Submit"/>
 </form>
+<hr>
 <?php 
 if($_POST['title'] && $_POST['year'] && $_POST['company'] && $_POST['rating'])
 {
