@@ -83,5 +83,12 @@ $db_connection = mysql_connect("localhost", "cs143", "");
 
 	mysql_close($db_connection);
 ?>
+
+<hr>
+Search for other actors/movies
+<form action="./search.php" method="GET">Search: <input type="text" name="keyword">
+<input type="submit" value="Search">
+</form>
+
 </body>
 </html>
