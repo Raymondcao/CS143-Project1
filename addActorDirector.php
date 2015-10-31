@@ -22,7 +22,7 @@ DOD: <input type="text" name="dod"><br>
 	$row = mysql_fetch_row($rs);
 	$id = $row[0];
 	echo "received id = $id<br>";
-	$id++;
+	$id++;4
 	mysql_query("UPDATE MaxPersonID SET id=id+1", $db_connection);
 	$query = "";
 	$dod = "NULL";
