@@ -21,20 +21,22 @@
 		
 		echo "You are searching [".$unescapedKeyword."] results...<br><br>";
 
-		$keyword = mysql_real_escape_string($unescapedKeyword, $db_connection);
+		$keywords = split(" ", $unescapedKeyword, 2);
+		$keyword0 = mysql_real_escape_string($keywords[0], $db_connection);
+		$keyword1 = mysql_real_escape_string($keywords[1], $db_connection);
 		echo "Searching match records in Actor database ... <br>";
-		$query = sprintf("SELECT id, first, last, dob FROM Actor WHERE first LIKE '%%%s%%' OR last LIKE '%%%s%%';",$keyword, $keyword);
+		$query = sprintf("SELECT id, first, last, dob FROM Actor WHERE (first LIKE '%%%s%%' OR last LIKE '%%%s%%') AND (first LIKE '%%%s%%' OR last LIKE '%%%s%%');",$keyword0, $keyword0, $keyword1, $keyword1);
 		$actors = mysql_query($query, $db_connection);
 
 		$actor = mysql_fetch_row($actors);
 		while($actor){
 			$date = new DateTime($actor[3]);
-			echo "Actor: <a href=\"./showActorInfo.php?id=".$actor[0]."\">".$actor[1].$actor[2]."(".$date->format('Y-m-d').")</a><br>";
+			echo "Actor: <a href=\"./showActorInfo.php?id=".$actor[0]."\">".$actor[1]." ".$actor[2]."(".$date->format('Y-m-d').")</a><br>";
 			$actor = mysql_fetch_row($actors);
 		}
 
 
-
+		$keyword = mysql_real_escape_string($unescapedKeyword, $db_connection);
 		echo "<br>Searching match records in Movie database ... <br>";
 		$query = sprintf("SELECT title, id, year FROM Movie WHERE title LIKE '%%%s%%';",$keyword);
 		$movies = mysql_query($query, $db_connection);
