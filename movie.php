@@ -1,4 +1,5 @@
 <html><head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
 	<title>A sample of Movie Database</title>
 </head>
 <frameset cols="25%,75%" frameborder="0" border="0">

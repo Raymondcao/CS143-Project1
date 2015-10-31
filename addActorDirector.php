@@ -1,17 +1,20 @@
 
 <html>
-<head></head>
+<head>
+<link rel="stylesheet" type="text/css" href="mainframe.css">
+</head>
 <body>
-<form method="POST">
-Identity:  <input type="radio" name="identity" value="Actor" checked>Actor  <input type="radio" name="identity" value="Director">Director <br>
-First name: <input type="text" name="firstname"><br>
-Last name: <input type="text" name="lastname"><br>
-Sex: <input type="radio" name="sex" value="Male">Male  <input type="radio" name="sex" value="Female">Female<br>
-DOB: <input type="text" name="dob"><br>
-DOD: <input type="text" name="dod"><br>
-<input type="submit" value="Submit"/>
+<form method="post">
+Identity:  <input type="radio" name="identity" value="Actor" checked>Actor  <input type="radio" name="identity" value="Director">Director <br><br>
+First name: <input type="text" name="firstname"><br><br>
+Last name: <input type="text" name="lastname"><br><br>
+Sex: <input type="radio" name="sex" value="Male">Male  <input type="radio" name="sex" value="Female">Female<br><br>
+DOB: <input type="text" name="dob"><br><br>
+DOD: <input type="text" name="dod"><br><br>
+<input type="submit" value="Submit"/><br>
 
 </form>
+<hr>
 <?php
 	if($_POST['lastname'] && $_POST['firstname'] && $_POST['sex'] && $_POST['dob'])
 	{

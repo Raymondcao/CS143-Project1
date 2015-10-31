@@ -1,5 +1,6 @@
 <html>
-<head></head>
+<head>
+<link rel="stylesheet" type="text/css" href="mainframe.css"></head>
 <body>
 <?php
 $db_connection = mysql_connect("localhost", "cs143", "");

@@ -1,5 +1,6 @@
 <html>
-<head></head>
+<head>
+<link rel="stylesheet" type="text/css" href="mainframe.css"></head>
 <body>
 <form method="post">
 <?php
@@ -19,7 +20,7 @@ $db_connection = mysql_connect("localhost", "cs143", "");
 		}
 		echo "</select>";
 	}
-	echo "<br>";
+	echo "<br><br>";
 	$query = "SELECT first, last ,id FROM Director ORDER BY first";
 	$rs = mysql_query($query, $db_connection);
 	$numrows = mysql_num_rows($rs);
@@ -37,9 +38,9 @@ $db_connection = mysql_connect("localhost", "cs143", "");
 
 		mysql_close($db_connection);
 ?>
-<br>
+<br><br>
 <input type="submit">
-
+<hr>
 <?php
 	if($_POST['director'] && $_POST['movie'])
 	{
