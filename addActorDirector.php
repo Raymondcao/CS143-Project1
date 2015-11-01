@@ -8,7 +8,7 @@
 Identity:  <input type="radio" name="identity" value="Actor" checked>Actor  <input type="radio" name="identity" value="Director">Director <br><br>
 First name: <input type="text" name="firstname"><br><br>
 Last name: <input type="text" name="lastname"><br><br>
-Sex: <input type="radio" name="sex" value="Male">Male  <input type="radio" name="sex" value="Female">Female<br><br>
+Sex: <input type="radio" name="sex" value="Male" checked>Male  <input type="radio" name="sex" value="Female">Female<br><br>
 DOB: <input type="text" name="dob"><br><br>
 DOD: <input type="text" name="dod"><br><br>
 <input type="submit" value="Submit"/><br>
