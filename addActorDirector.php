@@ -18,21 +18,19 @@ DOD: <input type="text" name="dod"><br><br>
 <?php
 	if($_POST['lastname'] && $_POST['firstname'] && $_POST['sex'] && $_POST['dob'])
 	{
-	echo "<br>trying to establish connection<br>";
+	//echo "<br>trying to establish connection<br>";
 	$db_connection = mysql_connect("localhost", "cs143", "");
 	mysql_select_db("TEST", $db_connection);
 	$rs = mysql_query("SELECT * FROM MaxPersonID", $db_connection);
 	$row = mysql_fetch_row($rs);
 	$id = $row[0];
-	echo "received id = $id<br>";
+	//echo "received id = $id<br>";
 	$id++;
 	mysql_query("UPDATE MaxPersonID SET id=id+1", $db_connection);
 	$query = "";
-	$dod = "NULL";
 	if(!empty($_POST['dod']))
-		$dod =  mysql_real_escape_string($_GET['dod'], $db_connection);
-	
-	
+	{
+		$dod =  mysql_real_escape_string($_POST['dod'], $db_connection);
 	if($_POST['identity'] == 'Actor')
 		$query = sprintf("INSERT INTO Actor VALUES ('%s','%s', '%s', '%s', '%s', '%s')",
 		mysql_real_escape_string($id, $db_connection),
@@ -43,18 +41,37 @@ DOD: <input type="text" name="dod"><br><br>
 			 $dod
 			); 
 	else
-		$query = sprintf("INSERT INTO Actor VALUES ('%s','%s', '%s', '%s', '%s', '%s')",
+		$query = sprintf("INSERT INTO Director VALUES ('%s','%s', '%s', '%s' , '%s')",
 		mysql_real_escape_string($id, $db_connection),
 		mysql_real_escape_string($_POST['lastname'], $db_connection), 
 		 mysql_real_escape_string($_POST['firstname'], $db_connection), 
 		    mysql_real_escape_string($_POST['dob'], $db_connection), 
 			$dod
 			);
+	}
+	else
+	{
+		if($_POST['identity'] == 'Actor')
+		$query = sprintf("INSERT INTO Actor VALUES ('%s','%s', '%s', '%s', '%s', NULL)",
+		mysql_real_escape_string($id, $db_connection),
+		 mysql_real_escape_string($_POST['lastname'], $db_connection),
+		 mysql_real_escape_string($_POST['firstname'], $db_connection),  
+		   mysql_real_escape_string($_POST['sex'], $db_connection), 
+		    mysql_real_escape_string($_POST['dob'], $db_connection)
+			); 
+	else
+		$query = sprintf("INSERT INTO Director VALUES ('%s','%s', '%s', '%s' , NULL)",
+		mysql_real_escape_string($id, $db_connection),
+		mysql_real_escape_string($_POST['lastname'], $db_connection), 
+		 mysql_real_escape_string($_POST['firstname'], $db_connection), 
+		    mysql_real_escape_string($_POST['dob'], $db_connection)
+			);
+	}
 	
 	$rs = mysql_query($query, $db_connection);
 	$affected = mysql_affected_rows($db_connection);
 	if($affected > 0)
-		echo "<br>Success!<br>";
+		echo "<h2>Success!<h2>";
 	mysql_close($db_connection);
 	}
 ?>

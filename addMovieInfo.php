@@ -42,13 +42,13 @@ Rating:
 <?php 
 if($_POST['title'] && $_POST['year'] && $_POST['company'] && $_POST['rating'])
 {
-echo "<br>trying to establish connection<br>";
+//echo "<br>trying to establish connection<br>";
 	$db_connection = mysql_connect("localhost", "cs143", "");
 	mysql_select_db("TEST", $db_connection);
 	$rs = mysql_query("SELECT * FROM MaxMovieID", $db_connection);
 	$row = mysql_fetch_row($rs);
 	$id = $row[0];
-	echo "received id = $id<br>";
+	//echo "received id = $id<br>";
 	$id++;
 	mysql_query("UPDATE MaxMovieID SET id=id+1", $db_connection);
 	
@@ -62,7 +62,7 @@ echo "<br>trying to establish connection<br>";
 	$rs = mysql_query($query, $db_connection);
 	$affected = mysql_affected_rows($db_connection);
 	if($affected > 0)
-		echo "<br>Success for movies!<br>";
+		echo "<br><h3>Success</h3><br>";
 	$genres = array( 'Action', 'Adult', 'Adventure' ,'Animation' ,'Comedy' ,'Crime' ,'Documentary' ,'Drama', 'Family' ,'Fantasy' ,'Horror' ,'Musical' ,'Mystery' ,'Romance' , 'Sci-Fi' ,'Short', 'Thriller', 'War', 'Western');
 	$len = count($genres);
 	for($i = 0; $i < $len; $i++)
@@ -72,8 +72,8 @@ echo "<br>trying to establish connection<br>";
 			$query = sprintf("INSERT INTO MovieGenre VALUES('%s', '%s')", $id, $genres[$i] );
 			$rs = mysql_query($query, $db_connection);
 				$affected = mysql_affected_rows($db_connection);
-				if($affected > 0)
-				echo "<br>Success for genre". $genres[$i] ."<br>";
+				//if($affected > 0)
+				//echo "<br>Success for genre". $genres[$i] ."<br>";
 		}
 	}
 	mysql_close($db_connection);

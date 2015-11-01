@@ -54,7 +54,7 @@ $db_connection = mysql_connect("localhost", "cs143", "");
 	$numrows = mysql_affected_rows();
 	if($numrows > 0)
 	{
-		echo "<h4>Success!!</h4>";
+		echo "<h3>Success</h3>";
 	}
 
 		mysql_close($db_connection);

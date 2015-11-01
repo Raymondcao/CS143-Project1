@@ -14,10 +14,11 @@ $db_connection = mysql_connect("localhost", "cs143", "");
 	{
 		$row = mysql_fetch_assoc($rs);
 		printf("<h3> %s %s</h3>" , $row['first'], $row['last'] );
+		//|| $value == "0000-00-00"
 		foreach($row as $name=>$value)
 		{
 			if($name != 'id' && $name != 'last' && $name != 'first')
-				if($value=="" && $name == 'dod')
+				if(($value=="" ) && $name == 'dod')
 					printf("%s: %s<br>", ucfirst($name), "Still Alive");
 				else
 					printf("%s: %s<br>", ucfirst($name), $value);
