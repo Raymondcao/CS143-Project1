@@ -71,8 +71,8 @@ $db_connection = mysql_connect("localhost", "cs143", "");
 	$query = sprintf("SELECT COUNT(*), AVG(rating) FROM Review WHERE mid='%s';", mysql_real_escape_string($id, $db_connection));
 	$rs = mysql_query($query, $db_connection);
 	$info = mysql_fetch_row($rs);
-	if (info[1]==0){
-		info[1]="0";
+	if ($info[1]==0){
+		$info[1]="0";
 	}
 	echo "Average Score: ".$info[1]."/5 (5.0 is best) by ".$info[0]." reviews(s).<a href=\"./addComment.php?mid=".$id."\">  Add your review now!!</a><br>";
 	$query = sprintf("SELECT name, time, rating, comment FROM Review WHERE mid='%s';", mysql_real_escape_string($id, $db_connection));
