@@ -44,7 +44,7 @@ if($_POST['title'] && $_POST['year'] && $_POST['company'] && $_POST['rating'])
 {
 //echo "<br>trying to establish connection<br>";
 	$db_connection = mysql_connect("localhost", "cs143", "");
-	mysql_select_db("TEST", $db_connection);
+	mysql_select_db("CS143", $db_connection);
 	$rs = mysql_query("SELECT * FROM MaxMovieID", $db_connection);
 	$row = mysql_fetch_row($rs);
 	$id = $row[0];

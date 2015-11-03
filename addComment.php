@@ -10,7 +10,7 @@
 			Movie:	<select name="mid">
 					<?php 
 					$db_connection = mysql_connect("localhost", "cs143", "");
-					mysql_select_db("TEST", $db_connection);
+					mysql_select_db("CS143", $db_connection);
 					$query = sprintf("SELECT title, year FROM Movie WHERE id='%s';",
 					 							 mysql_real_escape_string($_GET['mid'], $db_connection));
 					$movies = mysql_query($query, $db_connection);
@@ -40,7 +40,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == "GET" && $_GET['rating']){
 	$db_connection = mysql_connect("localhost", "cs143", "");
-	mysql_select_db("TEST", $db_connection);
+	mysql_select_db("CS143", $db_connection);
 
 	$query = sprintf("INSERT INTO Review VALUES('%s', now(), '%s', '%s', '%s')",
 							 mysql_real_escape_string($_GET['yourname'], $db_connection),

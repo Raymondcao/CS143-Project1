@@ -5,7 +5,7 @@
 <form action="" method="post">
 <?php
 $db_connection = mysql_connect("localhost", "cs143", "");
-	mysql_select_db("TEST", $db_connection);
+	mysql_select_db("CS143", $db_connection);
 	$query = "SELECT title,id FROM Movie ORDER BY title";
 	$rs = mysql_query($query, $db_connection);
 	$numrows = mysql_num_rows($rs);
@@ -47,7 +47,7 @@ Role: <input type = "text" name="role"></input>
 	if($_POST['movie'] && $_POST['actor'] && $_POST['role'])
 	{
 	$db_connection = mysql_connect("localhost", "cs143", "");
-	mysql_select_db("TEST", $db_connection);
+	mysql_select_db("CS143", $db_connection);
 	if(isset($_POST['movie']) && isset($_POST['actor']) && isset($_POST['role']))
 	$query = sprintf("INSERT INTO MovieActor VALUES('%s', '%s', '%s')", 
 						mysql_real_escape_string($_POST['movie'], $db_connection),
